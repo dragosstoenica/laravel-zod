@@ -1,0 +1,82 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "dragosstoenica/laravel-zod",
+    "description": "Generate Zod v4 TypeScript schemas from Spatie Laravel Data classes (output) and Laravel FormRequest classes (input). Full Laravel rule coverage, schema references for nested Data classes, lazy-ref dedup for circular relations, locale-aware messages.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "zod",
+        "spatie-data",
+        "form-request",
+        "validation",
+        "typescript",
+        "schema",
+        "codegen",
+        "type-safety"
+    ],
+    "authors": [
+        {
+            "name": "Dragos Stoenica",
+            "email": "mindwar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "illuminate/translation": "^11.0|^12.0|^13.0",
+        "illuminate/validation": "^11.0|^12.0|^13.0"
+    },
+    "require-dev": {
+        "driftingly/rector-laravel": "^2.0",
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.13",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+        "rector/rector": "^2.0",
+        "spatie/laravel-data": "^4.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelZod\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelZod\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelZod\\LaravelZodServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "fix": "composer lint && composer refactor",
+        "lint": "pint",
+        "refactor": "rector",
+        "test:lint": "pint --test",
+        "test:types": "phpstan analyse --memory-limit=512M",
+        "test:refactor": "rector --dry-run",
+        "test:unit": "pest",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:refactor",
+            "@test:unit"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
