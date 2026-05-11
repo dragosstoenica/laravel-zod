@@ -2,7 +2,7 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/dragosstoenica/laravel-zod.svg?style=flat-square)](https://packagist.org/packages/dragosstoenica/laravel-zod)
 [![PHP Version](https://img.shields.io/packagist/php-v/dragosstoenica/laravel-zod.svg?style=flat-square)](https://packagist.org/packages/dragosstoenica/laravel-zod)
-[![License](https://img.shields.io/packagist/l/dragosstoenica/laravel-zod.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/github/license/dragosstoenica/laravel-zod.svg?style=flat-square)](LICENSE)
 
 Generate **Zod 4** schemas from Laravel `FormRequest` classes (input) and Spatie [`laravel-data`](https://spatie.be/docs/laravel-data) DTOs (output). PHP stays the source of truth; TypeScript gets runtime parsing **and** inferred types from a single file.
 
