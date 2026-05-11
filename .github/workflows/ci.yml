@@ -13,11 +13,6 @@ jobs:
       matrix:
         php: ['8.3', '8.4', '8.5']
         laravel: ['11.*', '12.*', '13.*']
-        exclude:
-          # Laravel 11 dropped before our PHP 8.3 floor was relevant — skip
-          # the slowest combo that adds no signal.
-          - php: '8.3'
-            laravel: '11.*'
 
     name: PHP ${{ matrix.php }} · Laravel ${{ matrix.laravel }}
 
