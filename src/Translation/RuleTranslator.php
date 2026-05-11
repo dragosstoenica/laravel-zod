@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelZod\Translation;
 
+use BackedEnum;
 use Illuminate\Validation\Rules\Enum as EnumRule;
 use LaravelZod\Contracts\HasZodSchema;
 use LaravelZod\Schema\Constraint;
@@ -12,7 +13,6 @@ use LaravelZod\Schema\ObjectSchema;
 use LaravelZod\Schema\PropertySchema;
 use LaravelZod\Schema\PropertyType;
 use ReflectionEnum;
-use ReflectionEnumBackedCase;
 use ReflectionObject;
 use RuntimeException;
 
@@ -1014,25 +1014,16 @@ final class RuleTranslator
     private function enumString(PropertySchema $prop, array $params): void
     {
         $class = $params[0] ?? '';
-        if ($class !== '' && enum_exists($class)) {
-            $reflection = new ReflectionEnum($class);
-            if ($reflection->isBacked()) {
-                /** @var list<int|string> $values */
-                $values = [];
-                $cases = $reflection->getCases();
-                if (! is_array($cases)) {
-                    $cases = [];
-                }
-                foreach ($cases as $case) {
-                    if ($case instanceof ReflectionEnumBackedCase) {
-                        $values[] = $case->getBackingValue();
-                    }
-                }
-                $prop->enumValues = $values;
-                $prop->type = PropertyType::ENUM;
-
-                return;
+        if ($class !== '' && is_subclass_of($class, BackedEnum::class)) {
+            /** @var list<int|string> $values */
+            $values = [];
+            foreach ((new ReflectionEnum($class))->getCases() as $case) {
+                $values[] = $case->getBackingValue();
             }
+            $prop->enumValues = $values;
+            $prop->type = PropertyType::ENUM;
+
+            return;
         }
         $this->warnings[] = "enum rule on '{$prop->name}' could not resolve {$class} as a backed enum.";
     }

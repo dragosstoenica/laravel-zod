@@ -32,7 +32,7 @@ final readonly class ZodRenderer
             $out[] = '';
         }
 
-        return mb_rtrim(implode("\n", $out))."\n";
+        return rtrim(implode("\n", $out))."\n";
     }
 
     private function renderSchema(ObjectSchema $schema): string

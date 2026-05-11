@@ -246,7 +246,7 @@ final readonly class DataClassAnalyzer
         }
 
         if ($type[0] === '\\') {
-            return mb_ltrim($type, '\\');
+            return ltrim($type, '\\');
         }
 
         if ($context instanceof ReflectionClass) {

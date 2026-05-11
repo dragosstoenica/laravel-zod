@@ -55,7 +55,7 @@ final class ClassDiscoverer
 
         $namespace = '';
         if (preg_match('/^\s*namespace\s+([^;]+);/m', $contents, $m) === 1) {
-            $namespace = mb_trim($m[1]);
+            $namespace = trim($m[1]);
         }
 
         if (preg_match('/^\s*(?:final\s+|abstract\s+)?class\s+([A-Za-z_][A-Za-z0-9_]*)/m', $contents, $m) !== 1) {
