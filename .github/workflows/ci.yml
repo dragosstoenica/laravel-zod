@@ -11,13 +11,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # The package itself requires PHP ^8.3 and supports Laravel 11/12.
-        # Laravel 13 is not in the matrix yet because orchestra/testbench
-        # has no compatible release for it at the time of writing — once
-        # the testbench v11 line ships, add `13.*` here.
-        php: ['8.3', '8.4']
-        laravel: ['11.*', '12.*']
+        php: ['8.3', '8.4', '8.5']
+        laravel: ['11.*', '12.*', '13.*']
         exclude:
+          # Laravel 11 dropped before our PHP 8.3 floor was relevant — skip
+          # the slowest combo that adds no signal.
           - php: '8.3'
             laravel: '11.*'
 

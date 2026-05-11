@@ -6,7 +6,7 @@
 
 Generate **Zod 4** schemas from Laravel `FormRequest` classes (input) and Spatie [`laravel-data`](https://spatie.be/docs/laravel-data) DTOs (output). PHP stays the source of truth; TypeScript gets runtime parsing **and** inferred types from a single file.
 
-**Compatibility**: PHP 8.3 / 8.4 · Laravel 11 / 12 / 13 · Zod 4.x · Spatie Data 4.22+
+**Compatibility**: PHP 8.3 / 8.4 / 8.5 · Laravel 11 / 12 / 13 · Zod 4.x · Spatie Data 4.22+
 
 ```ts
 // On a real server response — catches backend drift before it hits your render layer
